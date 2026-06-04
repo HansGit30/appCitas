@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreDiagnosisRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        // Reglas basadas en Diagnósticos de image_3390df.png
+        return [
+            'descripcion'      => 'required|string',
+            'fecha'            => 'required|date_format:Y-m-d H:i:s',
+            'paciente_id'      => 'required|integer|exists:patients,id_paciente',
+            'medico_id'        => 'required|integer|exists:doctors,id_medico',
+            'gravedad'         => 'required|string|max:50',
+            'recomendaciones'  => 'required|string',
+            'tipo_diagnostico' => 'required|string|max:255',
+        ];
+    }
+}

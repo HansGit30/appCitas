@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreDoctorRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        // Reglas basadas en Médicos de image_3390df.png
+        return [
+            'nombre'           => 'required|string|max:255',
+            'apellido'         => 'required|string|max:255',
+            'especialidad'     => 'required|string|max:255',
+            'telefono'         => 'required|string|max:50',
+            'email'            => 'required|email|max:255|unique:doctors,email',
+            'licencia'         => 'required|string|max:100|unique:doctors,licencia',
+            'años_experiencia' => 'required|integer|min:0',
+        ];
+    }
+}
