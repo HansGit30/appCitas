@@ -16,3 +16,5 @@ Route::middleware('auth.basic')->get('/user',function(Request $request){
 
 
 Route::apiResource('patient',PatientController::class);
+Route::apiResource('appointment',PatientController::class);
+
