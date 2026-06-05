@@ -7,6 +7,8 @@ use App\Http\Requests\StoreAppointmentRequest;
 use App\Http\Requests\UpdateQuoteRequest;
 use App\Http\Resources\AppointmentResource;
 use App\Models\Appointment;
+use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class QuoteController extends Controller
@@ -22,13 +24,17 @@ class QuoteController extends Controller
 
     public function create()
     {
-        return view('appointment.create');
+        $patient = Patient::all();
+        $doctor = Doctor::all(); 
+        return view('appointment.create', compact('patient','doctor'));
     }
 
     public function edit($id)
     {
         $appointment = Appointment::findOrFail($id);
-        return view('appointment.edit', compact('appointment'));
+        $patient = Patient::all();
+        $doctor = Doctor::all(); 
+        return view('appointment.edit', compact('appointment','patient','doctor'));
     }
 
 
@@ -45,7 +51,7 @@ class QuoteController extends Controller
     {
         $appointment = appointment::create($request->validated());
         //return new StudentResource($student);
-        return redirect()->route('alumno')->with('success', '¡Alumno registrado con éxito!');
+        return redirect()->route('cita')->with('success', '¡Alumno registrado con éxito!');
     }
 
     /**
@@ -65,8 +71,8 @@ class QuoteController extends Controller
         $appointment = appointment::findOrFail($id);
         //$student = student::where('student_id', $id)->firstOrFail();
         $appointment->update($request->validated());
-        return new AppointmentResource($appointment);
-        //return redirect()->route('alumno')->with('success', '¡Alumno actualizado con éxito!');
+        //return new AppointmentResource($appointment);
+        return redirect()->route('cita')->with('success', '¡Cita actualizado con éxito!');
     }
 
     /**

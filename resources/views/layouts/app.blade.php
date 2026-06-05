@@ -34,15 +34,84 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-xl-4">
 
+                        @auth
+                        {{-- Definimos la lista de correos autorizados como administradores --}}
+                        @php
+                            $admins = [
+                                'olartemelohans224@gmail.com',
+                                'aguirreantoni172@gmail.com',
+                                'derekgalarzasilva@gmail.com',
+                            ];
+                        @endphp
+
+                        @if (in_array(auth()->user()->email, $admins))
+                            <li class="nav-item dropdown position-static px-2">
+                            <a class="nav-link dropdown-toggle text-dark fw-semibold" href="#" id="pacientesDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Panel Administrativo
+                            </a>
+
+                            <div class="dropdown-menu w-100 border-0 shadow-sm m-0 p-4"
+                                aria-labelledby="pacientesDropdown" style="top: 100%; border-radius: 0 0 16px 16px;">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4 border-end">
+                                            <ul class="list-unstyled lh-lg">
+                                                <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
+                                                        href="{{ route('paciente') }}">Pacientes <i class="bi bi-arrow-right ms-2"></i></a>
+                                                </li>
+                                                <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
+                                                        href="{{ route('medico') }}">Médicos <i class="bi bi-arrow-right ms-2"></i></a></li>
+                                                <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
+                                                        href="{{ route('cita') }}">Citas <i class="bi bi-arrow-right ms-2"></i></a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="col-md-4 border-end ps-md-4">
+                                            <ul class="list-unstyled lh-lg">
+                                                <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
+                                                        href="{{ route('diagnostico') }}">Diagnósticos <i class="bi bi-arrow-right ms-2"></i></a>
+                                                </li>
+                                                <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
+                                                        href="{{ route('tratamiento') }}">Tratamientos <i class="bi bi-arrow-right ms-2"></i></a>
+                                                </li>
+                                                <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
+                                                        href="{{ route('medicamento') }}">Medicamentos <i class="bi bi-arrow-right ms-2"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="col-md-4 ps-md-4 d-flex align-items-center justify-content-center">
+                                            <div class="position-relative overflow-hidden rounded-4 shadow-sm w-100"
+                                                style="height: 280px; background: url('{{ asset('ad.webp') }}') center/cover no-repeat;">
+                                                <div
+                                                    class="position-absolute bottom-0 start-50 translate-middle-x mb-4 w-75">
+                                                    <a href="#"
+                                                        class="btn btn-white bg-white w-100 rounded-pill py-2 fw-bold text-dark shadow-sm d-flex align-items-center justify-content-center gap-2"
+                                                        style="font-size: 0.9rem;">
+                                                        Te cuidamos, te curamos. <i class="bi bi-arrow-right"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </li>
+                        @else
                         <li class="nav-item dropdown position-static px-2">
                             <a class="nav-link dropdown-toggle text-dark fw-semibold" href="#" id="pacientesDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Para Pacientes
                             </a>
-
+    
                             <div class="dropdown-menu w-100 border-0 shadow-sm m-0 p-4"
                                 aria-labelledby="pacientesDropdown" style="top: 100%; border-radius: 0 0 16px 16px;">
                                 <div class="container">
@@ -68,7 +137,7 @@
                                                         Bien</a></li>
                                             </ul>
                                         </div>
-
+    
                                         <div class="col-md-4 border-end ps-md-4">
                                             <ul class="list-unstyled lh-lg">
                                                 <li><a class="dropdown-item text-muted py-2" href="#">Atención
@@ -79,7 +148,7 @@
                                                         quirúrgicas</a></li>
                                             </ul>
                                         </div>
-
+    
                                         <div class="col-md-4 ps-md-4 d-flex align-items-center justify-content-center">
                                             <div class="position-relative overflow-hidden rounded-4 shadow-sm w-100"
                                                 style="height: 280px; background: url('{{ asset('pac.webp') }}') center/cover no-repeat;">
@@ -101,59 +170,74 @@
                         </li>
                         <li class="nav-item px-2"><a class="nav-link text-dark fw-semibold" href="#">Cirugía
                                 Robótica</a></li>
-                        <li class="nav-item dropdown position-static px-2">
-                            <a class="nav-link dropdown-toggle text-dark fw-semibold" href="#" id="pacientesDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Panel Administrativo
-                            </a>
+                        @endif
+                    @else
+                    <li class="nav-item dropdown position-static px-2">
+                        <a class="nav-link dropdown-toggle text-dark fw-semibold" href="#" id="pacientesDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Para Pacientes
+                        </a>
 
-                            <div class="dropdown-menu w-100 border-0 shadow-sm m-0 p-4"
-                                aria-labelledby="pacientesDropdown" style="top: 100%; border-radius: 0 0 16px 16px;">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-4 border-end">
-                                            <ul class="list-unstyled lh-lg">
-                                                <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
-                                                        href="#">Pacientes <i class="bi bi-arrow-right ms-2"></i></a>
-                                                </li>
-                                                <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
-                                                        href="#">Médicos <i class="bi bi-arrow-right ms-2"></i></a></li>
-                                                <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
-                                                        href="#">Citas <i class="bi bi-arrow-right ms-2"></i></a></li>
-                                            </ul>
-                                        </div>
+                        <div class="dropdown-menu w-100 border-0 shadow-sm m-0 p-4"
+                            aria-labelledby="pacientesDropdown" style="top: 100%; border-radius: 0 0 16px 16px;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4 border-end">
+                                        <ul class="list-unstyled lh-lg">
+                                            <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
+                                                    href="#">Especialidades <i
+                                                        class="bi bi-arrow-right ms-2"></i></a></li>
+                                            <li><a class="dropdown-item text-muted py-2" href="#">Unidades
+                                                    especializadas</a></li>
+                                            <li><a class="dropdown-item text-muted py-2" href="#">Staff Médico</a>
+                                            </li>
+                                            <li><a class="dropdown-item text-muted py-2" href="#">Centro de
+                                                    Diagnóstico de Imágenes</a></li>
+                                            <li><a class="dropdown-item text-muted py-2" href="#">Servicios</a></li>
+                                            <li><a class="dropdown-item text-muted py-2" href="#">Promociones</a>
+                                            </li>
+                                            <li><a class="dropdown-item text-muted py-2" href="#">Sedes</a></li>
+                                            <li><a class="dropdown-item text-muted py-2" href="#">Centro
+                                                    Estético</a></li>
+                                            <li><a class="dropdown-item text-muted py-2" href="#">Programa Vive
+                                                    Bien</a></li>
+                                        </ul>
+                                    </div>
 
-                                        <div class="col-md-4 border-end ps-md-4">
-                                            <ul class="list-unstyled lh-lg">
-                                                <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
-                                                        href="#">Diagnósticos <i class="bi bi-arrow-right ms-2"></i></a>
-                                                </li>
-                                                <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
-                                                        href="#">Tratamientos <i class="bi bi-arrow-right ms-2"></i></a>
-                                                </li>
-                                                <li><a class="dropdown-item fw-bold text-dark d-flex align-items-center py-2"
-                                                        href="#">Medicamentos <i class="bi bi-arrow-right ms-2"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <div class="col-md-4 border-end ps-md-4">
+                                        <ul class="list-unstyled lh-lg">
+                                            <li><a class="dropdown-item text-muted py-2" href="#">Atención
+                                                    general</a></li>
+                                            <li><a class="dropdown-item text-muted py-2" href="#">Especialidades
+                                                    médicas</a></li>
+                                            <li><a class="dropdown-item text-muted py-2" href="#">Especialidades
+                                                    quirúrgicas</a></li>
+                                        </ul>
+                                    </div>
 
-                                        <div class="col-md-4 ps-md-4 d-flex align-items-center justify-content-center">
-                                            <div class="position-relative overflow-hidden rounded-4 shadow-sm w-100"
-                                                style="height: 280px; background: url('{{ asset('ad.webp') }}') center/cover no-repeat;">
-                                                <div
-                                                    class="position-absolute bottom-0 start-50 translate-middle-x mb-4 w-75">
-                                                    <a href="#"
-                                                        class="btn btn-white bg-white w-100 rounded-pill py-2 fw-bold text-dark shadow-sm d-flex align-items-center justify-content-center gap-2"
-                                                        style="font-size: 0.9rem;">
-                                                        Te cuidamos, te curamos. <i class="bi bi-arrow-right"></i>
-                                                    </a>
-                                                </div>
+                                    <div class="col-md-4 ps-md-4 d-flex align-items-center justify-content-center">
+                                        <div class="position-relative overflow-hidden rounded-4 shadow-sm w-100"
+                                            style="height: 280px; background: url('{{ asset('pac.webp') }}') center/cover no-repeat;">
+                                            <div
+                                                class="position-absolute bottom-0 start-50 translate-middle-x mb-4 w-75">
+                                                <a href="#"
+                                                    class="btn btn-white bg-white w-100 rounded-pill py-2 fw-bold text-dark shadow-sm d-flex align-items-center justify-content-center gap-2"
+                                                    style="font-size: 0.9rem;">
+                                                    Encuentra una especialidad <i class="bi bi-arrow-right"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </div>
+                    </li>
+                    <li class="nav-item px-2"><a class="nav-link text-dark fw-semibold" href="#">Blog educativo</a>
+                    </li>
+                    <li class="nav-item px-2"><a class="nav-link text-dark fw-semibold" href="#">Cirugía
+                            Robótica</a></li>
+                    @endauth
+
                     </ul>
 
                     <ul class="navbar-nav ms-auto align-items-center flex-row justify-content-end">

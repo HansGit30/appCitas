@@ -12,7 +12,7 @@ class UpdateQuoteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,8 +26,8 @@ class UpdateQuoteRequest extends FormRequest
         return [
             'fecha'         => 'required|date_format:Y-m-d H:i:s',
             'motivo'        => 'required|string|max:255',
-            'paciente_id'   => 'required|integer|exists:patients,id_paciente', // Valida que el ID personalizado exista
-            'medico_id'     => 'required|integer|exists:doctors,id_medico',     // Valida que el ID personalizado exista
+            'paciente_id'   => 'required', // Valida que el ID personalizado exista
+            'medico_id'     => 'required',     // Valida que el ID personalizado exista
             'estado'        => 'required|string|max:50',
             'observaciones' => 'required|string',
             'sala'          => 'required|string|max:50',

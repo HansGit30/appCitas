@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\MedicineController;
 use App\Http\Controllers\Api\PatientController;
 use App\Http\Controllers\Api\QuoteController;
+use App\Http\Controllers\Api\TreatmentController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -67,12 +68,12 @@ Route::delete('/diagnostico/destroy/{diagnosis}',[DiagnosisController::class,'de
 
 
 
-Route::get('/tratamiento',[PatientController::class, 'listar'])->name('tratamiento');
-Route::get('/tratamiento/create',[PatientController::class,'create'])->name('tratamiento.create');
-Route::post('/tratamiento/store',[PatientController::class,'store'])->name('tratamiento.store');
-Route::get('/tratamiento/edit/{treatment}',[PatientController::class,'edit'])->name('tratamiento.edit');
-Route::put('/tratamiento/update/{treatment}',[PatientController::class,'update'])->name('tratamiento.update');
-Route::delete('/tratamiento/destroy/{treatment}',[PatientController::class,'destroy'])->name('tratamiento.destroy');
+Route::get('/tratamiento',[TreatmentController::class, 'listar'])->name('tratamiento');
+Route::get('/tratamiento/create',[TreatmentController::class,'create'])->name('tratamiento.create');
+Route::post('/tratamiento/store',[TreatmentController::class,'store'])->name('tratamiento.store');
+Route::get('/tratamiento/edit/{treatment}',[TreatmentController::class,'edit'])->name('tratamiento.edit');
+Route::put('/tratamiento/update/{treatment}',[TreatmentController::class,'update'])->name('tratamiento.update');
+Route::delete('/tratamiento/destroy/{treatment}',[TreatmentController::class,'destroy'])->name('tratamiento.destroy');
 
 
 
