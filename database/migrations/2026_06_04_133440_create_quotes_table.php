@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('motivo');
             
             // Llaves foráneas apuntando a tus IDs personalizados
-            $table->foreignId('paciente_id')->constrained('patients', 'id_paciente')->onDelete('cascade');
-            $table->foreignId('medico_id')->constrained('doctors', 'id_medico')->onDelete('cascade');
+            $table->foreignId('id_paciente')->constrained('patients', 'id_paciente')->onDelete('cascade');
+            $table->foreignId('id_medico')->constrained('doctors', 'id_medico')->onDelete('cascade');
             
             $table->string('estado');
             $table->text('observaciones');

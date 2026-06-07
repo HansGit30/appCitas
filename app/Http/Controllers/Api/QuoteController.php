@@ -49,9 +49,9 @@ class QuoteController extends Controller
      */
     public function store(StoreAppointmentRequest $request)
     {
-        $appointment = appointment::create($request->validated());
+        $appointment = Appointment::create($request->validated());
         //return new StudentResource($student);
-        return redirect()->route('cita')->with('success', '¡Alumno registrado con éxito!');
+        return redirect()->route('cita')->with('success', '¡Cita registrado con éxito!');
     }
 
     /**
@@ -82,7 +82,7 @@ class QuoteController extends Controller
     {
         $appointment = appointment::findOrFail($id);
         $appointment->delete();
-        return response()->json(null, 204);
-        //return redirect()->route('alumno')->with('success', '¡Alumno eliminado con éxito!');
+        //return response()->json(null, 204);
+        return redirect()->route('cita')->with('success', '¡Cita eliminado con éxito!');
     }
 }

@@ -28,8 +28,8 @@ class UpdateDoctorRequest extends FormRequest
             'apellido'         => 'required|string|max:255',
             'especialidad'     => 'required|string|max:255',
             'telefono'         => 'required|string|max:50',
-            'email'            => 'required|email|max:255|unique:doctors,email',
-            'licencia'         => 'required|string|max:100|unique:doctors,licencia',
+            'email'            => 'required|email|max:255',
+            'licencia'         => 'required|string|max:100',
             'años_experiencia' => 'required|integer|min:0',
         ];
     }

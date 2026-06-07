@@ -15,7 +15,7 @@
     <div class="flex items-center gap-4">
         
         <!-- Botón Crear Nuevo Paciente -->
-        <a href="{{ route('paciente.create') }}" 
+        <a href="{{ route('medicamento.create') }}" 
            class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-full shadow-sm transition-all duration-200 ease-in-out transform hover:scale-[1.02]">
             <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
             <span>Nuevo Medicamento</span>

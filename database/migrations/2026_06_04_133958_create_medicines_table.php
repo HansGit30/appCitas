@@ -22,10 +22,10 @@ return new class extends Migration
             $table->string('duracion');
             
             // Llave foránea que referencia al ID del tratamiento creado arriba
-            $table->foreignId('tratamiento_id')->constrained('treatments', 'id_tratamiento')->onDelete('cascade');
+            $table->foreignId('id_tratamiento')->constrained('treatments', 'id_tratamiento')->onDelete('cascade');
             
-            $table->string('Proveedor'); // Respetando la mayúscula de la imagen
-            $table->string('Efectos secundarios'); // El espacio se adaptará como un string normal
+            $table->string('proveedor'); // Respetando la mayúscula de la imagen
+            $table->string('efecto'); // El espacio se adaptará como un string normal
 
             $table->timestamps();
         });

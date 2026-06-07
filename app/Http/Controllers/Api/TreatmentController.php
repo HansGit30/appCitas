@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTreatmentRequest;
 use App\Http\Requests\UpdateTreatmentRequest;
 use App\Http\Resources\TreatmentResource;
+use App\Models\Diagnosis;
+use App\Models\Doctor;
 use App\Models\Treatment;
 use Illuminate\Http\Request;
 
@@ -22,13 +24,17 @@ class TreatmentController extends Controller
 
     public function create()
     {
-        return view('treatment.create');
+        $diagnosis = Diagnosis::all();
+        $doctor = Doctor::all();
+        return view('treatment.create', compact('diagnosis', 'doctor'));
     }
 
     public function edit($id)
     {
         $treatment = Treatment::findOrFail($id);
-        return view('treatment.edit', compact('treatment'));
+        $diagnosis = Diagnosis::all();
+        $doctor = Doctor::all();
+        return view('treatment.edit', compact('treatment','diagnosis','doctor'));
     }
 
     /**
@@ -46,8 +52,8 @@ class TreatmentController extends Controller
     public function store(StoreTreatmentRequest $request)
     {
         $treatment = Treatment::create($request->validated());
-        return new TreatmentResource($treatment);
-        //return redirect()->route('alumno')->with('success', '¡Alumno registrado con éxito!');
+        //return new TreatmentResource($treatment);
+        return redirect()->route('tratamiento')->with('success', '¡Tratamiento registrado con éxito!');
     }
 
     /**
@@ -67,8 +73,8 @@ class TreatmentController extends Controller
         $treatment = Treatment::findOrFail($id);
         //$student = student::where('student_id', $id)->firstOrFail();
         $treatment->update($request->validated());
-        return new TreatmentResource($treatment);
-        //return redirect()->route('alumno')->with('success', '¡Alumno actualizado con éxito!');
+        //return new TreatmentResource($treatment);
+        return redirect()->route('tratamiento')->with('success', '¡Tratamiento actualizado con éxito!');
     }
 
     /**
@@ -78,7 +84,7 @@ class TreatmentController extends Controller
     {
         $treatment = Treatment::findOrFail($id);
         $treatment->delete();
-        return response()->json(null, 204);
-        //return redirect()->route('alumno')->with('success', '¡Alumno eliminado con éxito!');
+        //return response()->json(null, 204);
+        return redirect()->route('tratamiento')->with('success', '¡Tratamiento eliminado con éxito!');
     }
 }

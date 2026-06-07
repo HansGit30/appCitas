@@ -19,8 +19,8 @@ class Medication extends Model
         'dosis',
         'frecuencia',
         'duracion',
-        'tratamiento_id', // Campo relacional
-        'Proveedor',
-        'Efectos secundarios'
+        'id_tratamiento', // Campo relacional
+        'proveedor',
+        'efecto'
     ];
 }

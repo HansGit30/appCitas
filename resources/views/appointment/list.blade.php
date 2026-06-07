@@ -52,8 +52,8 @@
                 </div>
     
                 <div class="my-2 space-y-0.5 text-[11px] text-gray-600">
-                    <p><strong class="text-gray-700">Paciente ID:</strong> #{{ $appo->paciente_id }}</p>
-                    <p><strong class="text-gray-700">Médico ID:</strong> #{{ $appo->medico_id }}</p>
+                    <p><strong class="text-gray-700">Paciente ID:</strong> #{{ $appo->id_paciente }}</p>
+                    <p><strong class="text-gray-700">Médico ID:</strong> #{{ $appo->id_medico }}</p>
                     <p class="truncate" title="{{ $appo->observaciones }}">
                         <strong class="text-gray-700">Obs:</strong> {{ $appo->observaciones ?? 'Sin observaciones' }}
                     </p>

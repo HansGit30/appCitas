@@ -21,9 +21,9 @@ class MedicationResource extends JsonResource
             'dosis'               => $this->dosis,
             'frecuencia'          => $this->frecuencia,
             'duracion'            => $this->duracion,
-            'tratamiento_id'      => $this->tratamiento_id,
-            'Proveedor'           => $this->Proveedor, // Respetando la mayúscula
-            'Efectos secundarios' => $this->{'Efectos secundarios'}, // Acceso dinámico para nombres con espacios
+            'id_tratamiento'      => $this->id_tratamiento,
+            'proveedor'           => $this->proveedor, // Respetando la mayúscula
+            'efectos'             => $this->efectos, // Acceso dinámico para nombres con espacios
             'created_at'          => $this->created_at,
             'updated_at'          => $this->updated_at,
         ];

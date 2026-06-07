@@ -17,8 +17,8 @@ class Appointment extends Model
     protected $fillable = [
         'fecha',
         'motivo',
-        'paciente_id', // Campo relacional
-        'medico_id',   // Campo relacional
+        'id_paciente', // Campo relacional
+        'id_medico',   // Campo relacional
         'estado',
         'observaciones',
         'sala'

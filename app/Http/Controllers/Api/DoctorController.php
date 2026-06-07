@@ -45,8 +45,8 @@ class DoctorController extends Controller
      public function store(StoreDoctorRequest $request)
     {
         $doctor = Doctor::create($request->validated());
-        return new DoctorResource($doctor);
-        //return redirect()->route('alumno')->with('success', '¡Alumno registrado con éxito!');
+        //return new DoctorResource($doctor);
+        return redirect()->route('medico')->with('success', '¡Medico registrado con éxito!');
     }
 
     /**
@@ -66,8 +66,8 @@ class DoctorController extends Controller
         $doctor = Doctor::findOrFail($id);
         //$student = student::where('student_id', $id)->firstOrFail();
         $doctor->update($request->validated());
-        return new DoctorResource($doctor);
-        //return redirect()->route('alumno')->with('success', '¡Alumno actualizado con éxito!');
+        //return new DoctorResource($doctor);
+        return redirect()->route('medico')->with('success', '¡Medico actualizado con éxito!');
     }
 
     /**
@@ -77,7 +77,7 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::findOrFail($id);
         $doctor->delete();
-        return response()->json(null, 204);
-        //return redirect()->route('alumno')->with('success', '¡Alumno eliminado con éxito!');
+        //return response()->json(null, 204);
+        return redirect()->route('medico')->with('success', '¡Medico eliminado con éxito!');
     }
 }

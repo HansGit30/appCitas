@@ -46,8 +46,8 @@ class MedicineController extends Controller
     public function store(StoreMedicationRequest $request)
     {
         $medicine = Medication::create($request->validated());
-        return new MedicationResource($medicine);
-        //return redirect()->route('alumno')->with('success', '¡Alumno registrado con éxito!');
+        //return new MedicationResource($medicine);
+        return redirect()->route('medicamento')->with('success', '¡Medicamento registrado con éxito!');
     }
 
     /**
@@ -67,8 +67,8 @@ class MedicineController extends Controller
         $medicine = Medication::findOrFail($id);
         //$student = student::where('student_id', $id)->firstOrFail();
         $medicine->update($request->validated());
-        return new MedicationResource($medicine);
-        //return redirect()->route('alumno')->with('success', '¡Alumno actualizado con éxito!');
+        //return new MedicationResource($medicine);
+        return redirect()->route('medicamento')->with('success', '¡Medicamento actualizado con éxito!');
     }
 
     /**
@@ -78,7 +78,7 @@ class MedicineController extends Controller
     {
         $medicine = Medication::findOrFail($id);
         $medicine->delete();
-        return response()->json(null, 204);
-        //return redirect()->route('alumno')->with('success', '¡Alumno eliminado con éxito!');
+        //return response()->json(null, 204);
+        return redirect()->route('medicamento')->with('success', '¡Medicamento eliminado con éxito!');
     }
 }

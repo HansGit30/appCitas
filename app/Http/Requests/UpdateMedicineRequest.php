@@ -28,9 +28,9 @@ class UpdateMedicineRequest extends FormRequest
             'dosis'               => 'required|string|max:100',
             'frecuencia'          => 'required|string|max:100',
             'duracion'            => 'required|string|max:100',
-            'tratamiento_id'      => 'required|integer|exists:treatments,id_tratamiento', // Valida ID personalizado
-            'Proveedor'           => 'required|string|max:255', // Respetando la mayúscula de la imagen
-            'Efectos secundarios' => 'required|string|max:255', // Campo adaptado como string normal
+            'id_tratamiento'      => 'required|integer|exists:treatments,id_tratamiento', // Valida ID personalizado
+            'proveedor'           => 'required|string|max:255', // Respetando la mayúscula de la imagen
+            'efecto'              => 'required|string', // Campo adaptado como string normal
         ];
     }
 }

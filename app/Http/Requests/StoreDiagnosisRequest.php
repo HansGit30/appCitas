@@ -17,7 +17,7 @@ class StoreDiagnosisRequest extends FormRequest
         // Reglas basadas en Diagnósticos de image_3390df.png
         return [
             'descripcion'      => 'required|string',
-            'fecha'            => 'required|date_format:Y-m-d H:i:s',
+            'fecha'            => 'required|date',
             'paciente_id'      => 'required|integer|exists:patients,id_paciente',
             'medico_id'        => 'required|integer|exists:doctors,id_medico',
             'gravedad'         => 'required|string|max:50',
